@@ -1,6 +1,9 @@
 # The public data sets - it can be acquired online
 data/public/*
 
+# The generated plots
+Rplots.pdf
+
 # History files
 .Rhistory
 .Rapp.history
