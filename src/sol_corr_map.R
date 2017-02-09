@@ -9,7 +9,7 @@
 # Returns:
 #   sequence of angles in radians to lineary spaced data points
 #
-findAngles <- function(orbit, n_data_points, orbits = 10) {
+findAngles <- function(orbit, n_data_points, orbits = 5) {
   start = pi + 2 * pi * orbit / orbits
   stop = start + (pi / 2)
   angles = seq(start, stop, length.out = n_data_points)
@@ -106,7 +106,7 @@ plotSolarCorrelation <- function(data, dv_label, orbits = 10) {
     }
     
     planets <- sum(idx) # the number of planets on orbit
-    planet_angles <- findAngles(orbit, planets)
+    planet_angles <- findAngles(orbit, planets, orbits)
     
     # Draw orbit labels
     text(0, orbit - 0.1, sprintf("%.1f", (1.0 - orbit / orbits)), adj = c(0.5, 0.9), cex = 0.8, col = "lightgrey")
@@ -137,7 +137,7 @@ plotSolarCorrelation <- function(data, dv_label, orbits = 10) {
       # draw moons if any
       moon_idx_int <- which(moon_idx)
       moons <- sum(moon_idx)
-      moon_angles <- findAngles(0, moons)
+      moon_angles <- findAngles(1, moons)
       while (any(moon_idx)) {
         remaining_moons <- sum(moon_idx)
         current_moon <- moons - remaining_moons + 1 # +1 because in R indices starts from 1
