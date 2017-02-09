@@ -1,6 +1,9 @@
 # This is implementation of correlations visualization between dependent and explanatory variables 
 # as well as between explanatory variables pairs
 
+# The theshold to find highly correlated multiple explanatory variables
+inetrcorrelation_threshold <- 0.8
+
 # Return angles to the lineary spaced data points on the specified orbit
 #
 # Args:
@@ -126,7 +129,7 @@ plotSolarCorrelation <- function(data, dv_label, orbits = 10, out_file = NULL) {
       xy <- polarToDecart(angle = planet_angle, orbit)
       
       # add orbit around planet if it has moons
-      moon_idx <- (planet_corr >= 0.8) & all_idx
+      moon_idx <- (planet_corr >= inetrcorrelation_threshold) & all_idx
       if (any(moon_idx)) {
         symbols(xy[1], xy[2], circles = moon_orbit, bg = grey(0.8, alpha = 0.8), fg = NULL, add = TRUE, inches = FALSE)
       }
