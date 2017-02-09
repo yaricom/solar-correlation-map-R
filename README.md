@@ -1,5 +1,5 @@
 # Solar Correlation Map Plot in R language
-Port of python library to provide correlation visualization between explanatory and dependent variables as well as between explanatory variables pairs. The original python library source code can be found in the following repository [GitHub][1]
+Port of python library to provide correlation visualization between explanatory and dependent variables as well as between explanatory variables pairs. The original python library source code can be found in the following [GitHub repository][1]
 
 ## Overview
 With help of provided tool its easy to find visually correlations between dependent and explanatory (input) variables. Also tool visualise correlation between explanatory (input) variables allowing to reduce deature space by replacing set of inter-correlated variables with one.
@@ -37,9 +37,9 @@ The resulting plot:
 ![alt text][housing_prices_sol_plot]
 
 ## References
-[Original python library](https://github.com/Zapf-Consulting/solar-correlation-map)
 
-[A new visualization to beautifully explore correlations](https://www.oreilly.com/learning/a-new-visualization-to-beautifully-explore-correlations)
+1. [Original python library](https://github.com/Zapf-Consulting/solar-correlation-map)
+2. [A new visualization to beautifully explore correlations](https://www.oreilly.com/learning/a-new-visualization-to-beautifully-explore-correlations)
 
 [1]: https://github.com/Zapf-Consulting/solar-correlation-map
 [2]: https://en.wikipedia.org/wiki/Pearson_correlation_coefficient
