@@ -57,8 +57,9 @@ drawCelestialBody <- function(xy, radius, col, lbl, corr_positive = FALSE, last_
 #   data: the data frame with data
 #   dv_label: the name of dependent variable (sun)
 #   orbits: the number of orbits to depict
+#   out_file: the output file to save plot
 #
-plotSolarCorrelation <- function(data, dv_label, orbits = 10) {
+plotSolarCorrelation <- function(data, dv_label, orbits = 10, out_file = NULL) {
   lbls <- names(data)
   # Get dv_label index in array of labels
   center_idx_bool <- lbls == dv_label
@@ -86,7 +87,7 @@ plotSolarCorrelation <- function(data, dv_label, orbits = 10) {
   
   # Draw the sun (dependent variable)
   symbols(0, 0, circles = r, xlim = plim, ylim = plim, bg = colors[center_idx], fg = NULL, add = TRUE, inches = FALSE)
-  text(r, r, lbls[center_idx], adj = c(0.1, 0), cex = 0.8, col = grey(0.5, alpha = 1))
+  text(r, r, lbls[center_idx], adj = c(0, 2), cex = 0.8, col = grey(0.5, alpha = 1))
   
   # Draw orbital systems with all correlated explanatory variables
   for (orbit in 1:orbits) {
@@ -160,6 +161,29 @@ plotSolarCorrelation <- function(data, dv_label, orbits = 10) {
     # move to next orbit
     last_orbit <- new_orbit
   }
-  
+}
 
+# read command line arguments
+library(optparse)
+option_list <- list(
+  make_option(c("-d", "--data"), type="character", action="store", dest="data_file",
+              help="the CSV data file to read data from. Should have header."),
+  make_option(c("-v", "--variable"), type="character", action="store", dest="dependent_var",
+              help="the name of dependent variable for correlations visualization")
+)
+parser <- OptionParser(usage = "%prog [options]", option_list = option_list, add_help_option = TRUE, 
+                       description = "The utility to build solar correlation map between explanatory variables loaded from CSV \
+                       file and specified dependent variable. The resulting plot will be saved into Rplots.pdf")
+args <- parse_args(parser, positional_arguments = TRUE)
+opt <- args$options
+
+# check if all arguments present 
+if (is.null(opt["data_file"][[1]]) || is.null(opt["dependent_var"][[1]])) {
+  print_help(parser)
+} else {
+  # run
+  print("Checking that input data files exist")
+  assertthat::assert_that(file.exists(opt$data_file))
+  data <- read.csv(opt$data_file)
+  plotSolarCorrelation(data = data, dv_label = opt$dependent_var)
 }
