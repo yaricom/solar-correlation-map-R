@@ -32,12 +32,13 @@ Save it into `data` directory and issue following command:
 ```
 Rscript src/sol_corr_map.R -d data/housing.csv -v MEDV
 ```
-
 The resulting plot:
+
 ![alt text][housing_prices_sol_plot]
 
-## Refernces
+## References
 [Original python library](https://github.com/Zapf-Consulting/solar-correlation-map)
+
 [A new visualization to beautifully explore correlations](https://www.oreilly.com/learning/a-new-visualization-to-beautifully-explore-correlations)
 
 [1]: https://github.com/Zapf-Consulting/solar-correlation-map
