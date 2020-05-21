@@ -2,7 +2,7 @@
 Port of python library to provide correlation visualization between explanatory and dependent variables as well as between explanatory variables pairs. The original python library source code can be found in the following [GitHub repository][1]
 
 ## Overview
-With help of provided tool its easy to find visually correlations between dependent and explanatory (input) variables. Also tool visualise correlation between explanatory (input) variables allowing to reduce deature space by replacing set of inter-correlated variables with one.
+With help of provided tool its easy to find visually correlations between dependent and explanatory (input) variables. Also tool visualise correlation between explanatory (input) variables allowing to reduce feature space by replacing set of inter-correlated variables with one.
 
 The level of correlation between dependent and explanatory variables visualized as set of orbits arround "sun" (dependent variable). The closer to the "sun" variables has higher [Pearson correlation coefficient][2].
 
